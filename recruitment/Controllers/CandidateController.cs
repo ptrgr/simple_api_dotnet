@@ -20,19 +20,14 @@ namespace recruitment.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Candidate>>> GetAllCandidates()
         {
-            var result = _candidateService.GetAllCandidates();
-            if (result == null)
-            {
-                return NotFound("Brak kandydatów");
-            }
-            return Ok(result);
-         
+            return await _candidateService.GetAllCandidates();
+       
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Candidate>> GetSingleCandidate(int id)
         {
-            var result = _candidateService.GetSingleCandidate(id);
+            var result = await _candidateService.GetSingleCandidate(id);
             if (result == null)
             {
                 return NotFound("Brak kandydata");
@@ -44,7 +39,7 @@ namespace recruitment.Controllers
         [HttpPost]
         public async Task<ActionResult<List<Candidate>>> AddCandidate(Candidate newCandidate)
         {
-            var result = _candidateService.AddCandidate(newCandidate);
+            var result = await _candidateService.AddCandidate(newCandidate);
           
             return Ok(result);
         }
@@ -52,7 +47,7 @@ namespace recruitment.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<List<Candidate>>> DeleteCandidate(int id)
         {
-           var result = _candidateService.DeleteCandidate(id);
+           var result = await _candidateService.DeleteCandidate(id);
             if (result == null)
             {
                 return NotFound("Brak kandydata");

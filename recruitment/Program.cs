@@ -1,4 +1,5 @@
 ﻿global using recruitment.Models;
+using Microsoft.EntityFrameworkCore;
 using recruitment.Services;
 
 
@@ -11,7 +12,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ICandidateService, CandidateService>();
-
+builder.Services.AddDbContext<CandidateDbContext>(
+     option => option.UseSqlServer(builder.Configuration.GetConnectionString("CandidateDbConnectionString"))
+);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

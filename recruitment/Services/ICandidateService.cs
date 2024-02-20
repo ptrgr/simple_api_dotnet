@@ -3,9 +3,9 @@
     public interface ICandidateService
     {
      
-        List<Candidate> GetAllCandidates();
-        Candidate GetSingleCandidate(int id);
-        List<Candidate> AddCandidate(Candidate candidate);
-        List<Candidate> DeleteCandidate(int id);
+        Task<List<Candidate>> GetAllCandidates();
+        Task<Candidate?> GetSingleCandidate(int id);
+        Task<List<Candidate>> AddCandidate(Candidate candidate);
+        Task<List<Candidate>?> DeleteCandidate(int id);
     }
 }
